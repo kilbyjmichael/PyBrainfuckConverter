@@ -24,10 +24,14 @@ def inp_usr(level):
     return indent("tape[ptr] = ord(input())", level)
 
 def jmp_for(level):
-    return indent("if tape[ptr] == 0:\n\twhile tape[ptr] != ']':\n\t\t")
+    global indent_level
+    indent_level += 2
+    return indent("if tape[ptr] != 0:\n\twhile tape[ptr] != 0:", level)
 
 def jmp_bck(level):
-    return "#figure me out ]"
+    global indent_level
+    indent_level -= 2
+    return indent("break", level)
 
 indent_level = 0
 
